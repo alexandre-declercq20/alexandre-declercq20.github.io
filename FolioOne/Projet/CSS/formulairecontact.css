@@ -1,0 +1,130 @@
+body {
+  font-family: "Fredoka One", sans-serif;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  grid-template-columns: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fdf2e9;
+}
+
+.hautdepage {
+  display: grid;
+  grid-template-columns: 2fr 24fr 1fr;
+  grid-template-rows: 5rem 5rem;
+  background-size: cover;
+  background-color: #5dade2;
+  width: 100vw;
+  height: 70px;
+}
+.logo {
+  grid-column: 1;
+  grid-row: 1;
+  width: 45x;
+  height: 45px;
+  margin: 15px;
+  cursor: pointer;
+}
+.titre {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+  margin-top: 5px;
+  pointer-events: none;
+}
+h1 {
+  height: 20px;
+}
+.connexion {
+  grid-column: 3;
+  grid-row: 1;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-right: -500px;
+  margin: 15px;
+  margin-top: 15px;
+  background-color: #5dade2;
+  border-radius: 100%;
+  transition: all 1s ease-in-out;
+}
+.connexion:hover {
+  background-color: azure;
+}
+.menu {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  background-color: #5dade2;
+}
+.menu a:hover {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #131313;
+  color: #5dade2;
+}
+.menu a {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #fdf2e9;
+  text-decoration: none;
+  border: solid 0px black;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+article {
+  grid-row: 2;
+  font-size: large;
+}
+.boutonS {
+  background-color: #10a76f;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+
+.boutonR {
+  background-color: #a80a0a;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.centre {
+  margin-top: -5px;
+  text-align: center;
+  font-family: "Fredoka One", sans-serif;
+}
+a {
+  color: black;
+}
+fieldset {
+  margin: 4px 420px;
+}
+
+footer {
+  background-color: #f3d6a1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+}
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  color: black;
+}
+h3 a {
+  text-decoration: none;
+  color: black;
+}

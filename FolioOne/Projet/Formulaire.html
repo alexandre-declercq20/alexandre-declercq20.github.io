@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- L’en-tête du document -->
+    <meta charset="UTF-8" />
+    <title>Connexion</title>
+    <link rel="stylesheet" href="CSS/formulaire.css" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="Image/logositedepetanques.png" />
+  </head>
+  <body>
+  <header>
+    <div class="hautdepage">
+      <h1 class="titre">Tournois de Petanque Jour et Nuit</h1>
+      <a href="TDweb.html">
+        <img
+          class="logo"
+          src="Image/logositedepetanques.png"
+          alt="logo"
+          
+      /></a>
+      <nav>
+        <img
+          class="connexion"
+          src="Image/logo_connexion.png"
+          alt="connexion"
+        />
+      </nav>
+    </div>
+    <div class="menu">
+      <a href="https://home.ffpjp.org" target="_blank">Féderation Francaise de Pétanque</a>
+      <a href="Formulairecontact.html">Contact</a>
+      <a href="apropos.html">À propos</a>
+      <a href="Quisommesnous.html">Concepteurs du site</a>
+      <a href="englishpage.html">English page</a>
+    </div>
+  </header>
+  <body>
+    
+  
+  <div class="video"><video src="Image/lv_0_20250114115721.mp4" loop muted autoplay playsinline>
+    </div>
+  <article>
+    
+      
+  
+      <section>
+        <h1 class="centre">Formulaire de connexion</h1>
+        <fieldset>
+          <legend>Connexion</legend>
+
+          <form method="post">
+            <p>IdenTomtifiant : <input type="text" name="login" required minlength="0" placeholder="Identifiant"/></p>
+              <p>Mot de passe :<input type="password" name="mdp" required minlength="0" placeholder="Mot de passe" /></p>
+          
+       
+      </section>
+      <section>
+        <h1 class="centre">Formulaire de renseignements</h1>
+   
+        
+        <fieldset class="qui">
+         <legend >Qui êtes-vous ?</legend>
+          <p>
+                <p>Prénom : <input type="text" id="prenom" placeholder="Prénom"/></p>
+              Quelle âge avez-vous ? :  
+               <select id="age" >
+                <option value="debut">Choisir</option>
+                <option value="18">18-29</option>
+                <option value="30">30-39</option>
+                <option value="40">40-49</option>
+                <option value="50">50-59</option>
+                <option value="60">60 et plus</option>
+                </select>
+          
+
+          <p>
+            Quelle est votre genre ? : 
+            <input type="radio" name="genre" value="masculin" id="m" />
+            <label for="m">Je suis un homme</label>
+            <input type="radio" name="genre" value="feminin" id="f" />
+            <label for="f">Je suis une femme</label>
+            <input type="radio" name="genre" value="autre" id="a" />
+            <label for="a">Autre</label>
+            
+          </p>
+
+          <p>  
+            Quand pensez vous être présent ? : 
+              <input type="checkbox" name="jeu[]" value="jamais" id="l" />
+              <label for="l">Lundi</label>
+              <input type="checkbox" name="jeu[]" value="temps" id="ma" />
+              <label for="ma">Mardi</label>
+              <input type="checkbox" name="jeu[]" value="souvent" id="me" />
+              <label for="me">Mercredi</label>
+              <input type="checkbox" name="jeu[]" value="tsouvent" id="j" />
+              <label for="j">Jeudi</label>
+              <input type="checkbox" name="jeu[]" value="quotidien" id="v" />
+              <label for="v">Vendredi</label>
+              <input type="checkbox" name="jeu[]" value="Samedi" id="s" />
+              <label for="s">Samedi</label>
+              <input type="checkbox" name="jeu[]" value="Dimanche" id="d" />
+              <label for="d">Dimanche</label>
+          </p>
+
+        <p>Avez-vous un handicap ? :</p>
+        <p><input type="text" name="malade" id="malade" required minlength="0" maxlength="3" placeholder="Oui ou non"></p>
+
+        <p> 
+            Des choses à rajouter ? :
+            
+        </p>
+        <p>
+        <textarea name="decris" id="decris" rows="12" cols="35" placeholder="Sur votre handicap ou sur vous !"></textarea>
+        
+      </p>
+      <p class="centre"><input class="boutonR"  type="reset" value="Effacer" />
+        <input class="boutonS" type="submit"  value="Envoyer" /></p> 
+        
+        
+
+    </section>
+        
+        
+
+    
+      
+
+    
+    
+    
+    
+    
+    
+          
+    
+
+    </section>
+    <footer>
+      <div class="footer-container">
+        <h3>&copy;2025 : tous les droits réservé</h3>
+      </div>
+      </footer>
+  </body>
+</html>
