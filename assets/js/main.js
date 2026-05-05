@@ -202,3 +202,53 @@
   });
 
 })();
+
+/**
+ * Login Admin
+ */
+(function() {
+  const ADMIN_USER = "admin";
+  const ADMIN_PASS = "admin123";
+
+  const toggleBtn = document.getElementById("togglePassword");
+  const usernameField = document.getElementById("username");
+
+  // Ne s'exécute que sur la page login
+  if (!usernameField) return;
+
+  window.handleLogin = function() {
+    const username = usernameField.value.trim();
+    const password = document.getElementById("password").value;
+    const errorMsg = document.getElementById("errorMsg");
+
+    if (username === ADMIN_USER && password === ADMIN_PASS) {
+      errorMsg.style.display = "none";
+      window.location.href = "admin.html";
+    } else {
+      errorMsg.style.display = "block";
+      document.getElementById("password").value = "";
+      document.getElementById("password").focus();
+    }
+  };
+
+  // Validation avec la touche Entrée
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") window.handleLogin();
+  });
+
+  // Afficher/masquer le mot de passe
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function() {
+      const pwd = document.getElementById("password");
+      const icon = document.getElementById("eyeIcon");
+      if (pwd.type === "password") {
+        pwd.type = "text";
+        icon.classList.replace("bi-eye", "bi-eye-slash");
+      } else {
+        pwd.type = "password";
+        icon.classList.replace("bi-eye-slash", "bi-eye");
+      }
+    });
+  }
+})();
+
