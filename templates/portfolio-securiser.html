@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Compétence Sécuriser{% endblock %}
+{% block body_class %}portfolio-details-page{% endblock %}
+
+{% block content %}
+<section id="portfolio-details" class="portfolio-details section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Compétence Sécuriser</h2>
+    <p>La sécurisation des systèmes informatiques vise à protéger les données et les infrastructures contre les menaces et les attaques, en mettant en place des mesures de prévention, de détection et de réponse aux incidents.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="portfolio-details-media">
+          <div class="main-image">
+            <div class="portfolio-details-slider swiper init-swiper" data-aos="zoom-in">
+              <script type="application/json" class="swiper-config">
+                {"loop":true,"speed":1000,"autoplay":{"delay":6000},"effect":"creative","creativeEffect":{"prev":{"shadow":true,"translate":[0,0,-400]},"next":{"translate":["100%",0,0]}},"slidesPerView":1,"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}
+              </script>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/securiser.jpg') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/securiser2.png') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/securiser3.png') }}" alt="" class="img-fluid"></div>
+              </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+          <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
+            <span>Security</span><span>Server</span><span>Linux</span><span>Firewall</span><span>Encryption</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="portfolio-details-content">
+          <div class="project-meta">
+            <div class="badge-wrapper"><span class="project-badge">Sécurité</span></div>
+            <div class="date-client">
+              <div class="meta-item"><i class="bi bi-calendar-check"></i><span>2025/2028</span></div>
+              <div class="meta-item"><i class="bi bi-people"></i><span>Projets Personnels & Académiques</span></div>
+            </div>
+          </div>
+          <h2 class="project-title">Projet Sécuriser</h2>
+
+          <div class="project-overview">
+            <p class="lead">La sécurisation des systèmes informatiques est essentielle pour protéger les données sensibles et assurer la continuité des opérations. Ce projet met en œuvre des mesures de sécurité avancées : configuration de pare-feu, chiffrement des communications, et gestion des accès utilisateurs.</p>
+
+            <div class="accordion project-accordion" id="accordionSecuriser">
+
+              <div class="accordion-item" data-aos="fade-up">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-sec1" aria-expanded="true">
+                    <i class="bi bi-clipboard-data me-2"></i> Aperçu du Projet
+                  </button>
+                </h2>
+                <div id="collapse-sec1" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <p>La sécurisation des systèmes informatiques implique l'identification des vulnérabilités potentielles, la mise en place de protocoles de sécurité robustes, et la formation des utilisateurs pour minimiser les risques d'erreur humaine.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-sec2">
+                    <i class="bi bi-exclamation-diamond me-2"></i> Le Challenge
+                  </button>
+                </h2>
+                <div id="collapse-sec2" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p>Le Challenge consiste à identifier et à atténuer les vulnérabilités potentielles dans les systèmes informatiques, tout en assurant une formation adéquate des utilisateurs pour réduire les risques d'erreur humaine.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-sec3">
+                    <i class="bi bi-award me-2"></i> La Solution
+                  </button>
+                </h2>
+                <div id="collapse-sec3" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p>La solution mise en œuvre comprend l'installation de pare-feu avancés, le chiffrement des données sensibles, et la mise en place de politiques strictes de gestion des accès. De plus, des sessions de formation régulières sont organisées pour sensibiliser les utilisateurs aux meilleures pratiques de sécurité.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+            <a href="{{ url_for('portfolio_surveiller') }}" class="btn-next-project"><i class="bi bi-arrow-left"></i></a>
+            <a href="{{ url_for('portfolio_administrer') }}" class="btn-next-project">Prochain Projet <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

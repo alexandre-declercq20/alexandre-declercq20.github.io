@@ -204,51 +204,79 @@
 })();
 
 /**
- * Login Admin
+ * =============================================
+ * ADMIN DASHBOARD
+ * Gestion du panneau d'administration
+ * =============================================
  */
-(function() {
-  const ADMIN_USER = "admin";
-  const ADMIN_PASS = "admin123";
+(function () {
 
-  const toggleBtn = document.getElementById("togglePassword");
-  const usernameField = document.getElementById("username");
-
-  // Ne s'exécute que sur la page login
-  if (!usernameField) return;
-
-  window.handleLogin = function() {
-    const username = usernameField.value.trim();
-    const password = document.getElementById("password").value;
-    const errorMsg = document.getElementById("errorMsg");
-
-    if (username === ADMIN_USER && password === ADMIN_PASS) {
-      errorMsg.style.display = "none";
-      window.location.href = "admin.html";
-    } else {
-      errorMsg.style.display = "block";
-      document.getElementById("password").value = "";
-      document.getElementById("password").focus();
-    }
+  /* ── Navigation entre les panneaux de l'admin ── */
+  window.showPanel = function(name, btn) {
+    // Cache tous les panneaux
+    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+    // Désactive tous les boutons sidebar
+    document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
+    // Affiche le panneau demandé
+    document.getElementById('panel-' + name).classList.add('active');
+    if (btn) btn.classList.add('active');
   };
 
-  // Validation avec la touche Entrée
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") window.handleLogin();
+  /* ── Pré-sélectionner une compétence depuis le tableau ── */
+  window.preselectComp = function(id, niveau) {
+    // Va sur le panneau "valider"
+    showPanel('valider', document.querySelector('[onclick*="valider"]'));
+    setTimeout(() => {
+      // Sélectionne la bonne compétence dans le <select>
+      const sel = document.getElementById('select-comp');
+      if (sel) sel.value = id;
+      // Coche la bonne carte de niveau
+      document.querySelectorAll('.radio-niveau').forEach(r => {
+        if (r.value === niveau) r.click();
+      });
+    }, 50);
+  };
+
+  /* ── Cartes de niveau cliquables (formulaire valider) ── */
+  document.querySelectorAll('.radio-niveau').forEach(radio => {
+    radio.addEventListener('change', () => {
+      // Remet toutes les cartes en état neutre
+      document.querySelectorAll('.niveau-card').forEach(c => {
+        c.style.border   = '2px solid transparent';
+        c.style.background = 'var(--admin-surface)';
+        c.style.color    = 'var(--admin-muted)';
+      });
+      // Met en évidence la carte sélectionnée
+      const card   = radio.nextElementSibling;
+      const niveau = card.dataset.niveau;
+      const colors = {
+        'non acquis':     ['rgba(100,116,139,.3)', 'var(--admin-muted)'],
+        'en cours':       ['rgba(251,191,36,.4)',  'var(--admin-yellow)'],
+        'presque acquis': ['rgba(167,139,250,.4)', 'var(--admin-accent2)'],
+        'acquis':         ['rgba(52,211,153,.4)',  'var(--admin-green)'],
+        'expert':         ['rgba(79,142,247,.4)',  'var(--admin-accent)'],
+      };
+      const [border, color] = colors[niveau] || ['var(--admin-border)', 'var(--admin-text)'];
+      card.style.border     = `2px solid ${border}`;
+      card.style.color      = color;
+      card.style.background = border.replace('.4)', '.08)');
+    });
   });
 
-  // Afficher/masquer le mot de passe
+  /* ── Afficher/masquer le mot de passe (page login) ── */
+  const toggleBtn = document.getElementById('togglePassword');
   if (toggleBtn) {
-    toggleBtn.addEventListener("click", function() {
-      const pwd = document.getElementById("password");
-      const icon = document.getElementById("eyeIcon");
-      if (pwd.type === "password") {
-        pwd.type = "text";
-        icon.classList.replace("bi-eye", "bi-eye-slash");
+    toggleBtn.addEventListener('click', function () {
+      const pwd  = document.getElementById('password');
+      const icon = document.getElementById('eyeIcon');
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+        icon.classList.replace('bi-eye', 'bi-eye-slash');
       } else {
-        pwd.type = "password";
-        icon.classList.replace("bi-eye-slash", "bi-eye");
+        pwd.type = 'password';
+        icon.classList.replace('bi-eye-slash', 'bi-eye');
       }
     });
   }
-})();
 
+})();

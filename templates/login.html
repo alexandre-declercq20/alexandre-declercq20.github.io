@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Connexion Admin{% endblock %}
+{% block body_class %}index-page{% endblock %}
+
+
+
+{% block content %}
+<section class="login-section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="login-card mx-auto">
+
+      <div class="login-icon"><i class="bi bi-person-lock"></i></div>
+      <h2>Espace Admin</h2>
+      <p class="subtitle">Connectez-vous pour accéder au panneau d'administration</p>
+
+      <form method="POST" action="{{ url_for('login') }}">
+        <div class="mb-3">
+          <label for="username" class="form-label">Identifiant</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Votre identifiant" autocomplete="username" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Mot de passe</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Votre mot de passe" autocomplete="current-password" required>
+            <button class="toggle-password" type="button" id="togglePassword" tabindex="-1">
+              <i class="bi bi-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <p class="error-msg{% if error %} visible{% endif %}" id="errorMsg">
+          <i class="bi bi-exclamation-circle"></i> Identifiant ou mot de passe incorrect.
+        </p>
+
+        <button type="submit" class="btn btn-primary btn-login mt-2">
+          <i class="bi bi-box-arrow-in-right me-2"></i>Se connecter
+        </button>
+      </form>
+
+      <a href="{{ url_for('index') }}" class="back-link">
+        <i class="bi bi-arrow-left me-1"></i>Retour à l'accueil
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+

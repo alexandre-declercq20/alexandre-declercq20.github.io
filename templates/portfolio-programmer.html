@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}Compétence Programmer{% endblock %}
+{% block body_class %}portfolio-details-page{% endblock %}
+
+{% block content %}
+<section id="portfolio-details" class="portfolio-details section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Compétence Programmer</h2>
+    <p>La programmation informatique fait référence à l'utilisation de différents langages pour communiquer avec les ordinateurs et leur donner des instructions.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="portfolio-details-media">
+          <div class="main-image">
+            <div class="portfolio-details-slider swiper init-swiper" data-aos="zoom-in">
+              <script type="application/json" class="swiper-config">
+                {"loop":true,"speed":1000,"autoplay":{"delay":6000},"effect":"creative","creativeEffect":{"prev":{"shadow":true,"translate":[0,0,-400]},"next":{"translate":["100%",0,0]}},"slidesPerView":1,"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}
+              </script>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/programmer.jpg') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/programmer2.jpg') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/programmer3.jpg') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/programmer4.png') }}" alt="" class="img-fluid"></div>
+              </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+          <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
+            <span>VScode</span><span>JavaScript</span><span>Bash</span><span>HTML/CSS</span><span>Python</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="portfolio-details-content">
+          <div class="project-meta">
+            <div class="badge-wrapper"><span class="project-badge">Programmation</span></div>
+            <div class="date-client">
+              <div class="meta-item"><i class="bi bi-calendar-check"></i><span>Décembre 2024</span></div>
+            </div>
+          </div>
+          <h2 class="project-title">Projet Webdesign</h2>
+          <div class="project-website">
+            <i class="bi bi-link-45deg"></i>
+            <a href="{{ url_for('static', filename='assets/TDweb/TDweb.html') }}" target="_blank">TPJN.com</a>
+          </div>
+
+          <div class="project-overview">
+            <p class="lead">L'objectif de ce projet était de concevoir un site événementiel afin de nous familiariser avec les bases de la programmation Web et d'acquérir des compétences en design.</p>
+
+            <div class="accordion project-accordion" id="accordionProgrammer">
+
+              <div class="accordion-item" data-aos="fade-up">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-p1" aria-expanded="true">
+                    <i class="bi bi-clipboard-data me-2"></i> Aperçu du Projet
+                  </button>
+                </h2>
+                <div id="collapse-p1" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <p>Ce projet de site événementiel est dédié à la pétanque, un sport traditionnel français en pleine modernisation. La plateforme propose une approche innovante avec un système de tournois qui s'organisent jour et nuit. Le site intègre un système de réservation en ligne, un suivi des scores en temps réel, et une interface utilisateur intuitive développée avec HTML5 et CSS3.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-p2">
+                    <i class="bi bi-exclamation-diamond me-2"></i> Le Challenge
+                  </button>
+                </h2>
+                <div id="collapse-p2" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p>Le principal défi de ce projet était de créer une interface responsive et visuellement attrayante. Nous devions concevoir une expérience utilisateur fluide tout en respectant plusieurs contraintes.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-p3">
+                    <i class="bi bi-award me-2"></i> Les Solutions
+                  </button>
+                </h2>
+                <div id="collapse-p3" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p>Pour répondre aux défis du projet, nous avons adopté une approche méthodique combinant plusieurs solutions techniques. Cette approche structurée nous a permis de livrer un site web tout en respectant les délais impartis et en assurant une expérience utilisateur de qualité.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+            <a href="{{ url_for('portfolio_connecter') }}" class="btn-next-project"><i class="bi bi-arrow-left"></i></a>
+            <a href="{{ url_for('portfolio_surveiller') }}" class="btn-next-project">Prochain Projet <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

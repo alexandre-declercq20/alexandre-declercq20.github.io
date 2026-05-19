@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block title %}Compétence Connecter{% endblock %}
+{% block body_class %}portfolio-details-page{% endblock %}
+
+{% block content %}
+<section id="portfolio-details" class="portfolio-details section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Compétence Connecter</h2>
+    <p>La compétence de connecter englobe la capacité à établir et gérer des connexions réseau efficaces et sécurisées, facilitant la communication et le partage de données entre différents systèmes et utilisateurs.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="portfolio-details-media">
+          <div class="main-image">
+            <div class="portfolio-details-slider swiper init-swiper" data-aos="zoom-in">
+              <script type="application/json" class="swiper-config">
+                {"loop":true,"speed":1000,"autoplay":{"delay":6000},"effect":"creative","creativeEffect":{"prev":{"shadow":true,"translate":[0,0,-400]},"next":{"translate":["100%",0,0]}},"slidesPerView":1,"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}
+              </script>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/connecter.jpg') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/connecter2.png') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/connecter3.png') }}" alt="" class="img-fluid"></div>
+              </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+          <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
+            <span>Connecter</span><span>Réseaux</span><span>Firewall</span><span>VPN</span><span>Cisco</span><span>Wireshark</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="portfolio-details-content">
+          <div class="project-meta">
+            <div class="badge-wrapper"><span class="project-badge">Connecter</span></div>
+            <div class="date-client">
+              <div class="meta-item"><i class="bi bi-calendar-check"></i><span>2025/2028</span></div>
+              <div class="meta-item"><i class="bi bi-people"></i><span>Projets Personnels & Académiques</span></div>
+            </div>
+          </div>
+          <h2 class="project-title">Projet Connecter</h2>
+
+          <div class="project-overview">
+            <p class="lead">Le projet Connecter vise à développer une solution innovante pour la gestion et la sécurisation des réseaux informatiques. Il intègre des technologies telles que les firewalls, les VPN, et les équipements Cisco.</p>
+
+            <div class="accordion project-accordion" id="accordionConnecter">
+
+              <div class="accordion-item" data-aos="fade-up">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-c1">
+                    AC12.01 ) Mesurer, analyser et commenter les signaux
+                  </button>
+                </h2>
+                <div id="collapse-c1" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Dans R1.04 et R1.13, j'ai appris à caractériser des signaux électriques : mesure de la tension, du courant, de la fréquence et de la période. J'ai utilisé l'oscilloscope et le multimètre en TP.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> Mesurer et interpréter un signal est important pour vérifier la qualité d'une liaison physique, détecter des perturbations et valider le bon fonctionnement d'un support de transmission.</p>
+                    <p><strong>Comment je l'ai fait :</strong> En TP avec oscilloscope et multimètre, en relevant les valeurs mesurées et en les comparant aux valeurs théoriques.</p>
+                    <p><strong>Mes difficultés :</strong> La lecture de l'oscilloscope était compliquée au départ, notamment le réglage de la base de temps et de la sensibilité verticale.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> Un signal nous renseigne sur la qualité d'une liaison bien avant qu'une panne soit visible au niveau logiciel.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je prendrais le temps de bien maîtriser les réglages de l'oscilloscope avant le TP.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-c2">
+                    AC12.02 ) Caractériser des systèmes de transmissions élémentaires
+                  </button>
+                </h2>
+                <div id="collapse-c2" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Étudié les caractéristiques des canaux de transmission (bande passante, atténuation, bruit), les types de transmissions et les limites théoriques du débit (théorème de Shannon, critère de Nyquist).</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> Comprendre les limites physiques d'une transmission est essentiel pour choisir le bon support et dimensionner une infrastructure.</p>
+                    <p><strong>Comment je l'ai fait :</strong> Via des cours théoriques, des exercices de calcul et la SAE1.03.</p>
+                    <p><strong>Mes difficultés :</strong> La modélisation mathématique (nombres complexes, échelle logarithmique) était abstraite au départ.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> Chaque support de transmission a des limites physiques infranchissables.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je chercherais dès le début des fiches techniques de câbles réels pour donner du sens concret aux formules.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-c3">
+                    AC12.03 ) Déployer des supports de transmission
+                  </button>
+                </h2>
+                <div id="collapse-c3" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Étudié les différents supports filaires (paire torsadée, câble coaxial, fibre optique) et les normes de câblage structuré (T568A/T568B). En TP, j'ai réalisé des câbles RJ45 et utilisé un testeur de câble.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> Le câblage est le fondement physique de tout réseau.</p>
+                    <p><strong>Comment je l'ai fait :</strong> En TP pratique de câblage, en respectant les codes couleurs des normes T568A/B.</p>
+                    <p><strong>Mes difficultés :</strong> Le sertissage des connecteurs RJ45 demandait de la précision et de la dextérité.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> La qualité de l'infrastructure physique conditionne toute la performance du réseau.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je m'exercerais au sertissage en amont du TP.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-c4">
+                    AC12.04 ) Connecter les systèmes de ToIP
+                  </button>
+                </h2>
+                <div id="collapse-c4" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Découvert les principes de la Téléphonie sur IP (ToIP) : le protocole SIP, le protocole RTP pour le transport de la voix. En TP, j'ai configuré des comptes SIP sur un serveur IPBX logiciel.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> La ToIP a remplacé la téléphonie analogique en entreprise.</p>
+                    <p><strong>Comment je l'ai fait :</strong> Via des cours sur les protocoles SIP et RTP, puis des TP de configuration d'IPBX. J'ai utilisé Wireshark pour observer les échanges SIP.</p>
+                    <p><strong>Mes difficultés :</strong> Comprendre le dialogue SIP et configurer correctement les comptes SIP côté serveur et côté client.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> La voix sur IP repose sur les mêmes fondements que tous les protocoles réseau, mais avec des contraintes spécifiques de latence.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je lirais la documentation du protocole SIP en amont des TP.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+            <a href="{{ url_for('portfolio_administrer') }}" class="btn-next-project"><i class="bi bi-arrow-left"></i></a>
+            <a href="{{ url_for('portfolio_programmer') }}" class="btn-next-project">Prochain Projet <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% block title %}Mon Portfolio{% endblock %}</title>
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='assets/img/logo site.jpg') }}" rel="icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins&family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet">
+
+  {% block css %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+  <!-- Header commun à toutes les pages -->
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{{ url_for('index') }}" {% if active == 'index' %}class="active"{% endif %}>Accueil</a></li>
+          <li><a href="{{ url_for('cv') }}"    {% if active == 'cv' %}class="active"{% endif %}>CV</a></li>
+          <li><a href="{{ url_for('portfolio') }}" {% if active == 'portfolio' %}class="active"{% endif %}>Portfolio</a></li>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </ul>
+      </nav>
+      <div class="header-social-links">
+        <a href="https://github.com/alexandre-declercq20"><i class="bi bi-github"></i></a>
+        <a href="https://fr.linkedin.com/in/alexandre-declercq-530a47263"><i class="bi bi-linkedin"></i></a>
+        <a href="{{ url_for('login') }}" class="btn btn-outline-primary ms-3">Se connecter</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenu spécifique à chaque page -->
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer commun -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">FolioOne</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://github.com/alexandre-declercq20"><i class="bi bi-github"></i></a>
+        <a href="https://fr.linkedin.com/in/alexandre-declercq-530a47263"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits">
+        <a href="{{ url_for('credits') }}">Crédits et mentions légales</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS -->
+  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/typed.js/typed.umd.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

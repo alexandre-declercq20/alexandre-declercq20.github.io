@@ -1,0 +1,373 @@
+{% extends 'base.html' %}
+
+{% block title %}Panneau d'administration{% endblock %}
+{% block body_class %}admin-page{% endblock %}
+
+
+
+{% block content %}
+<div class="admin-wrapper">
+
+  <!-- ── Sidebar ── -->
+  <aside class="admin-sidebar">
+    <span class="sidebar-label">Tableau de bord</span>
+    <button class="sidebar-item active" onclick="showPanel('dashboard', this)">
+      <i class="bi bi-grid-1x2"></i> Vue d'ensemble
+    </button>
+
+    <span class="sidebar-label">Contenu</span>
+    <button class="sidebar-item" onclick="showPanel('profil', this)">
+      <i class="bi bi-person-circle"></i> Profil
+    </button>
+    <button class="sidebar-item" onclick="showPanel('competences', this)">
+      <i class="bi bi-patch-check"></i> Compétences
+    </button>
+    <button class="sidebar-item" onclick="showPanel('valider', this)">
+      <i class="bi bi-pencil-square"></i> Valider une compétence
+    </button>
+    <button class="sidebar-item" onclick="showPanel('experience', this)">
+      <i class="bi bi-briefcase"></i> Expériences
+    </button>
+
+    <span class="sidebar-label">Système</span>
+    <button class="sidebar-item" onclick="showPanel('securite', this)">
+      <i class="bi bi-shield-lock"></i> Sécurité
+    </button>
+
+    <div class="sidebar-logout">
+      <a href="{{ url_for('index') }}" class="sidebar-item" style="color: var(--admin-red);">
+        <i class="bi bi-box-arrow-left"></i> Quitter l'admin
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Contenu principal ── -->
+  <main class="admin-content">
+
+    <!-- ══ DASHBOARD ══ -->
+    <div class="admin-panel active" id="panel-dashboard">
+      <div class="panel-header">
+        <h1>// vue_ensemble</h1>
+        <p>Bienvenue dans le panneau d'administration de ton portfolio.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card" style="--stat-color: var(--admin-accent);">
+          <div class="stat-label">Compétences</div>
+          <div class="stat-value">10</div>
+          <div class="stat-sub">sur 2 semestres</div>
+        </div>
+        <div class="stat-card" style="--stat-color: var(--admin-green);">
+          <div class="stat-label">Acquises</div>
+          <div class="stat-value">4</div>
+          <div class="stat-sub">niveau acquis ou expert</div>
+        </div>
+        <div class="stat-card" style="--stat-color: var(--admin-yellow);">
+          <div class="stat-label">En cours</div>
+          <div class="stat-value">4</div>
+          <div class="stat-sub">en cours / presque</div>
+        </div>
+        <div class="stat-card" style="--stat-color: var(--admin-red);">
+          <div class="stat-label">Non acquises</div>
+          <div class="stat-value">2</div>
+          <div class="stat-sub">à travailler</div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <h3>// progression_globale</h3>
+        {% set niveaux = ['non acquis', 'en cours', 'presque acquis', 'acquis', 'expert'] %}
+        {% set couleurs = ['admin-muted', 'admin-yellow', 'admin-accent2', 'admin-green', 'admin-accent'] %}
+        {% for semestre in semestres %}
+        <div style="margin-bottom: 20px;">
+          <div style="font-size:.8rem; color:var(--admin-muted); margin-bottom:10px; font-family:var(--admin-mono);">
+            {{ semestre.code }} — {{ semestre.nom }}
+          </div>
+          {% for bloc in semestre.blocs %}
+          <div style="margin-bottom: 8px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span style="font-size:.82rem; color:var(--admin-text);">{{ bloc.nom }}</span>
+              <span style="font-size:.75rem; color:var(--admin-muted);">{{ bloc.competences|length }} compétence(s)</span>
+            </div>
+            <div class="progress-admin">
+              {% set acquis = bloc.competences|selectattr('niveau', 'in', ['acquis','expert'])|list|length %}
+              {% set total = bloc.competences|length %}
+              {% set pct = (acquis / total * 100)|int if total > 0 else 0 %}
+              <div class="progress-fill "style="width: {{ pct }}%;"></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="admin-card">
+        <h3>// actions_rapides</h3>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button class="btn-admin btn-primary-admin" onclick="showPanel('valider', document.querySelector('[onclick*=valider]'))">
+            <i class="bi bi-pencil-square"></i> Valider une compétence
+          </button>
+          <button class="btn-admin btn-ghost-admin" onclick="showPanel('profil', document.querySelector('[onclick*=profil]'))">
+            <i class="bi bi-person"></i> Modifier le profil
+          </button>
+          <a href="{{ url_for('portfolio') }}" target="_blank" class="btn-admin btn-ghost-admin" style="text-decoration:none;">
+            <i class="bi bi-eye"></i> Voir le site
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PROFIL ══ -->
+    <div class="admin-panel" id="panel-profil">
+      <div class="panel-header">
+        <h1>// profil</h1>
+        <p>Modifie les informations affichées sur ta page d'accueil.</p>
+      </div>
+
+      <div class="alert-admin alert-info">
+        <i class="bi bi-info-circle"></i>
+        Ces informations sont lues depuis <code style="font-family:var(--admin-mono);">config.py</code>. Modifie ce fichier pour les mettre à jour.
+      </div>
+
+      <div class="admin-card">
+        <h3>// informations_personnelles</h3>
+        <form method="POST" action="/admin/update-profil">
+          <div class="profile-grid">
+            <div class="form-group">
+              <label>Prénom</label>
+              <input type="text" class="form-control-admin" value="{{ config.PRENOM if config else 'Alexandre' }}" name="prenom">
+            </div>
+            <div class="form-group">
+              <label>Nom</label>
+              <input type="text" class="form-control-admin" value="{{ config.NOM if config else 'Declercq' }}" name="nom">
+            </div>
+            <div class="form-group">
+              <label>Formation</label>
+              <input type="text" class="form-control-admin" value="{{ config.FORMATION if config else 'BUT Réseaux & Télécommunications' }}" name="formation">
+            </div>
+            <div class="form-group">
+              <label>École</label>
+              <input type="text" class="form-control-admin" value="{{ config.ECOLE if config else 'IUT de Béthune' }}" name="ecole">
+            </div>
+            <div class="form-group">
+              <label>GitHub URL</label>
+              <input type="url" class="form-control-admin" value="{{ config.GITHUB if config else 'https://github.com/alexandre-declercq20' }}" name="github">
+            </div>
+            <div class="form-group">
+              <label>LinkedIn URL</label>
+              <input type="url" class="form-control-admin" value="{{ config.LINKEDIN if config else '' }}" name="linkedin">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Description (page d'accueil)</label>
+            <textarea class="form-control-admin" name="description">{{ config.DESCRIPTION if config else "Je suis étudiant à l'IUT de Béthune dans le département Réseau informatique et Télécommunication." }}</textarea>
+          </div>
+          <div class="form-group">
+            <label>Domaines (séparés par des virgules)</label>
+            <input type="text" class="form-control-admin" value="{{ config.DOMAINES if config else 'Administrateur Réseau, Développeur Web, Technicien Réseau' }}" name="domaines">
+          </div>
+          <button type="submit" class="btn-admin btn-primary-admin">
+            <i class="bi bi-floppy"></i> Enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ══ COMPÉTENCES ══ -->
+    <div class="admin-panel" id="panel-competences">
+      <div class="panel-header">
+        <h1>// competences</h1>
+        <p>Liste de toutes tes compétences et leur niveau d'acquisition.</p>
+      </div>
+
+      {% for semestre in semestres %}
+      <div class="admin-card">
+        <h3>// {{ semestre.code }} — {{ semestre.nom }}</h3>
+        {% for bloc in semestre.blocs %}
+        <div style="margin-bottom: 20px;">
+          <div style="font-size:.78rem; color:var(--admin-accent2); font-family:var(--admin-mono); margin-bottom:10px; letter-spacing:.05em;">
+            {{ bloc.code }} › {{ bloc.nom }}
+          </div>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Compétence</th>
+                <th>Niveau</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for comp in bloc.competences %}
+              <tr>
+                <td><span style="font-family:var(--admin-mono); font-size:.78rem; color:var(--admin-accent);">{{ comp.code }}</span></td>
+                <td>{{ comp.nom }}</td>
+                <td>
+                  {% if comp.niveau == 'non acquis' %}
+                    <span class="badge-niveau niveau-non">non acquis</span>
+                  {% elif comp.niveau == 'en cours' %}
+                    <span class="badge-niveau niveau-cours">en cours</span>
+                  {% elif comp.niveau == 'presque acquis' %}
+                    <span class="badge-niveau niveau-presque">presque acquis</span>
+                  {% elif comp.niveau == 'acquis' %}
+                    <span class="badge-niveau niveau-acquis">acquis</span>
+                  {% elif comp.niveau == 'expert' %}
+                    <span class="badge-niveau niveau-expert">expert</span>
+                  {% endif %}
+                </td>
+                <td>
+                  <button class="btn-admin btn-ghost-admin" style="padding:5px 12px; font-size:.78rem;"
+                    onclick="preselectComp('{{ comp.id }}', '{{ comp.niveau }}')">
+                    <i class="bi bi-pencil"></i> Modifier
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- ══ VALIDER COMPÉTENCE ══ -->
+    <div class="admin-panel" id="panel-valider">
+      <div class="panel-header">
+        <h1>// valider_competence</h1>
+        <p>Mets à jour le niveau d'acquisition d'une compétence.</p>
+      </div>
+
+      {% if request.args.get('success') %}
+      <div class="alert-admin alert-success">
+        <i class="bi bi-check-circle"></i> Compétence mise à jour avec succès !
+      </div>
+      {% endif %}
+
+      <div class="admin-card">
+        <h3>// formulaire</h3>
+          <form method="POST" action="/admin/valider">
+          <div class="form-group">
+            <label>Compétence</label>
+            <select class="form-control-admin" name="competence_id" id="select-comp">
+              <option value="">— Choisir une compétence —</option>
+              {% for semestre in semestres %}
+                <optgroup label="{{ semestre.code }} — {{ semestre.nom }}">
+                  {% for bloc in semestre.blocs %}
+                    {% for comp in bloc.competences %}
+                    <option value="{{ comp.id }}" {% if request.args.get('comp_id') == comp.id|string %}selected{% endif %}>
+                      {{ comp.code }} — {{ comp.nom }}
+                    </option>
+                    {% endfor %}
+                  {% endfor %}
+                </optgroup>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Niveau d'acquisition</label>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:10px; margin-top:4px;">
+              {% for niveau, cls, icon in [
+                ('non acquis',    'niveau-non',     'bi-x-circle'),
+                ('en cours',      'niveau-cours',   'bi-hourglass-split'),
+                ('presque acquis','niveau-presque', 'bi-stars'),
+                ('acquis',        'niveau-acquis',  'bi-check-circle'),
+                ('expert',        'niveau-expert',  'bi-award')
+              ] %}
+              <label style="cursor:pointer;">
+                <input type="radio" name="niveau" value="{{ niveau }}" style="display:none;" class="radio-niveau">
+                <div class="niveau-card badge-{{ cls }}" style="
+                  padding: 12px; border-radius: 10px; text-align:center;
+                  border: 2px solid transparent; transition: all .15s;
+                  background: var(--admin-surface); color: var(--admin-muted);
+                " data-niveau="{{ niveau }}">
+                  <i class="bi {{ icon }}" style="font-size:1.2rem; display:block; margin-bottom:6px;"></i>
+                  <span style="font-size:.78rem; font-weight:600;">{{ niveau }}</span>
+                </div>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <button type="submit" class="btn-admin btn-primary-admin">
+            <i class="bi bi-floppy"></i> Enregistrer le niveau
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ══ EXPÉRIENCES ══ -->
+    <div class="admin-panel" id="panel-experience">
+      <div class="panel-header">
+        <h1>// experiences</h1>
+        <p>Gère les expériences professionnelles affichées sur ton CV.</p>
+      </div>
+
+      <div class="alert-admin alert-info">
+        <i class="bi bi-info-circle"></i>
+        Les expériences sont définies dans le template <code style="font-family:var(--admin-mono);">CV.html</code>. Une future version les chargera depuis la base de données.
+      </div>
+
+      <div class="admin-card">
+        <h3>// experiences_actuelles</h3>
+        <table class="admin-table">
+          <thead>
+            <tr><th>Poste</th><th>Entreprise</th><th>Période</th><th>Type</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Equipier Polyvalent</td><td>McDonald's, Seclin</td><td>Jan–Jul 2025</td><td><span class="badge-niveau niveau-acquis">CDI</span></td></tr>
+            <tr><td>Stage Technicien Réseau</td><td>Pregerance, Courrières</td><td>Mai 2025</td><td><span class="badge-niveau niveau-cours">Stage</span></td></tr>
+            <tr><td>Employé Commercial</td><td>Super U, Nieul-sur-Mer</td><td>Étés 2023/2024</td><td><span class="badge-niveau niveau-presque">Saisonnier</span></td></tr>
+            <tr><td>Stage en Carrosserie</td><td>Peugeot, Carvin</td><td>Mai 2022</td><td><span class="badge-niveau niveau-cours">Stage</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SÉCURITÉ ══ -->
+    <div class="admin-panel" id="panel-securite">
+      <div class="panel-header">
+        <h1>// securite</h1>
+        <p>Gère les paramètres de sécurité de ton panneau d'administration.</p>
+      </div>
+
+      <div class="admin-card">
+        <h3>// changer_mot_de_passe</h3>
+        <form method="POST" action="/admin/change-password">
+          <div class="form-group">
+            <label>Mot de passe actuel</label>
+            <input type="password" class="form-control-admin" name="current_password" placeholder="••••••••">
+          </div>
+          <div class="form-group">
+            <label>Nouveau mot de passe</label>
+            <input type="password" class="form-control-admin" name="new_password" placeholder="••••••••">
+          </div>
+          <div class="form-group">
+            <label>Confirmer le nouveau mot de passe</label>
+            <input type="password" class="form-control-admin" name="confirm_password" placeholder="••••••••">
+          </div>
+          <button type="submit" class="btn-admin btn-primary-admin">
+            <i class="bi bi-shield-check"></i> Mettre à jour
+          </button>
+        </form>
+      </div>
+
+      <div class="admin-card">
+        <h3>// infos_session</h3>
+        <table class="admin-table">
+          <tbody>
+            <tr><td style="color:var(--admin-muted); width:160px;">Utilisateur</td><td style="font-family:var(--admin-mono);">admin</td></tr>
+            <tr><td style="color:var(--admin-muted);">Base de données</td><td style="font-family:var(--admin-mono);">portfolio@localhost</td></tr>
+            <tr><td style="color:var(--admin-muted);">Framework</td><td style="font-family:var(--admin-mono);">Flask + SQLAlchemy</td></tr>
+            <tr><td style="color:var(--admin-muted);">Mode</td><td><span class="badge-niveau niveau-cours">development</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+{% endblock %}
+
+

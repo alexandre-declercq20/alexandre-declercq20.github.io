@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolio - Alexandre Declercq{% endblock %}
+{% block body_class %}portfolio-page{% endblock %}
+
+{% block content %}
+<section id="portfolio" class="portfolio section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Portfolio</h2>
+    <p>Sur cette page, vous trouverez tous mes projets en fonction de mes compétences du BUT R&T.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-strategy">
+          <div class="portfolio-card">
+            <div class="portfolio-img">
+              <a href="{{ url_for('portfolio_administrer') }}">
+                <img src="{{ url_for('static', filename='assets/img/portfolio/administrer.jpg') }}" alt="Administrer" class="img-fluid">
+              </a>
+            </div>
+            <div class="portfolio-info">
+              <h4>Compétence Administrer</h4>
+              <div class="portfolio-tags"><span>Concevoir</span><span>Déployer</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-finance">
+          <div class="portfolio-card">
+            <div class="portfolio-img">
+              <a href="{{ url_for('portfolio_connecter') }}">
+                <img src="{{ url_for('static', filename='assets/img/portfolio/connecter.jpg') }}" alt="Connecter" class="img-fluid">
+              </a>
+            </div>
+            <div class="portfolio-info">
+              <h4>Compétence Connecter</h4>
+              <div class="portfolio-tags"><span>Installer</span><span>Configurer</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-operations">
+          <div class="portfolio-card">
+            <div class="portfolio-img">
+              <a href="{{ url_for('portfolio_programmer') }}">
+                <img src="{{ url_for('static', filename='assets/img/portfolio/programmer.jpg') }}" alt="Programmer" class="img-fluid">
+              </a>
+            </div>
+            <div class="portfolio-info">
+              <h4>Compétence Programmer</h4>
+              <div class="portfolio-tags"><span>Logiciels</span><span>Développement</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-operations">
+          <div class="portfolio-card">
+            <div class="portfolio-img">
+              <a href="{{ url_for('portfolio_securiser') }}">
+                <img src="{{ url_for('static', filename='assets/img/portfolio/securiser.jpg') }}" alt="Sécuriser" class="img-fluid">
+              </a>
+            </div>
+            <div class="portfolio-info">
+              <h4>Compétence Sécuriser</h4>
+              <div class="portfolio-tags"><span>Protéger</span><span>Prévenir</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-operations">
+          <div class="portfolio-card">
+            <div class="portfolio-img">
+              <a href="{{ url_for('portfolio_surveiller') }}">
+                <img src="{{ url_for('static', filename='assets/img/portfolio/surveiller.jpg') }}" alt="Surveiller" class="img-fluid">
+              </a>
+            </div>
+            <div class="portfolio-info">
+              <h4>Compétence Surveiller</h4>
+              <div class="portfolio-tags"><span>Analyser</span><span>Surveillance</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+{% endblock %}

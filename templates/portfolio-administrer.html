@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block title %}Compétence Administrer{% endblock %}
+{% block body_class %}portfolio-details-page{% endblock %}
+
+{% block content %}
+<section id="portfolio-details" class="portfolio-details section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Compétence Administrer</h2>
+    <p>L'administration réseau consiste à gérer et superviser les opérations d'un réseau informatique pour assurer sa performance, sa sécurité et sa fiabilité.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="portfolio-details-media">
+          <div class="main-image">
+            <div class="portfolio-details-slider swiper init-swiper" data-aos="zoom-in">
+              <script type="application/json" class="swiper-config">
+                {"loop":true,"speed":1000,"autoplay":{"delay":6000},"effect":"creative","creativeEffect":{"prev":{"shadow":true,"translate":[0,0,-400]},"next":{"translate":["100%",0,0]}},"slidesPerView":1,"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}
+              </script>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/administrer.jpg') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/administrer2.jpeg') }}" alt="" class="img-fluid"></div>
+                <div class="swiper-slide"><img src="{{ url_for('static', filename='assets/img/portfolio/administrer3.png') }}" alt="" class="img-fluid"></div>
+              </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="portfolio-details-content">
+          <div class="project-meta">
+            <div class="badge-wrapper"><span class="project-badge">Bash/Scripts</span></div>
+            <div class="date-client">
+              <div class="meta-item"><i class="bi bi-calendar-check"></i><span>2025/2026</span></div>
+              <div class="meta-item"><i class="bi bi-people"></i><span>Projets Personnels & Académiques</span></div>
+            </div>
+          </div>
+          <h2 class="project-title">Projet Administrer</h2>
+          <div class="project-website">
+            <i class="bi bi-link-45deg"></i>
+            <a href="https://www.notion.so/SAE-102-6f8c64a3198d40e8ab35a33942f11962" target="_blank">SAE 102 - Notion</a>
+          </div>
+
+          <div class="project-overview">
+            <p class="lead">L'administration réseau consiste à assurer le bon fonctionnement des infrastructures informatiques. Elle comprend la configuration et la gestion des équipements réseau, la surveillance pour détecter et résoudre les incidents, ainsi que la mise en place de mesures de sécurité pour protéger les données.</p>
+
+            <div class="accordion project-accordion" id="accordionAdmin">
+
+              <div class="accordion-item" data-aos="fade-up">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-a1">
+                    AC11.01 ) Maîtriser les lois fondamentales de l'électricité
+                  </button>
+                </h2>
+                <div id="collapse-a1" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Appris dans la ressource R1.04 les lois fondamentales comme la loi d'Ohm, la loi des mailles et la loi des nœuds. J'ai étudié les notions de tension, courant, résistance et puissance électrique.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> C'était nécessaire pour comprendre le fonctionnement d'un circuit électronique afin d'intervenir sur des équipements réseaux et télécoms.</p>
+                    <p><strong>Comment je l'ai fait :</strong> J'ai appris les différentes formules dans la ressource R1.04, réalisé des exercices d'application et passé des évaluations pour valider mes connaissances.</p>
+                    <p><strong>Mes difficultés :</strong> La manipulation des formules de la loi d'Ohm et l'application des lois sur des circuits un peu complexes ont demandé de la pratique.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> Comprendre l'électricité est important pour diagnostiquer une panne ou intervenir en toute sécurité sur un équipement réseau.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je ferais davantage de schémas dès le début pour mieux visualiser le fonctionnement.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-a2">
+                    AC11.02 ) Comprendre l'architecture et les fondements des systèmes numériques
+                  </button>
+                </h2>
+                <div id="collapse-a2" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Étudié dans la ressource R1.06 les bases de la numération (binaire, hexadécimal, octal), le codage de l'information (ASCII, UTF-8), les principes des communications numériques.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> Comprendre comment l'information est représentée et transmise numériquement est la base aux réseaux et télécommunications.</p>
+                    <p><strong>Comment je l'ai fait :</strong> Via des cours théoriques, des exercices de conversion entre bases.</p>
+                    <p><strong>Mes difficultés :</strong> Les conversions entre bases numériques (notamment binaire ↔ hexadécimal). La logique booléenne et les portes logiques ont été une difficulté pour moi.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> Toutes les données informatiques sont une suite de 0 et de 1. Comprendre cela m'a aidé à mieux comprendre le fonctionnement des adresses IP.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je pratiquerais les conversions de bases dès le début avec des outils en ligne.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-a3">
+                    AC11.03 ) Configurer les fonctions de base du réseau local
+                  </button>
+                </h2>
+                <div id="collapse-a3" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Configuré des équipements réseau de base (switches, routeurs), mis en place des VLANs, attribué des adresses IP et testé la connectivité avec ping et traceroute.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> La configuration d'un réseau local est une compétence du technicien en réseau.</p>
+                    <p><strong>Comment je l'ai fait :</strong> Via des TP en salle réseaux sur des équipements Cisco, ainsi que Cisco Packet Tracer.</p>
+                    <p><strong>Mes difficultés :</strong> L'utilisation du CLI Cisco a été compliqué au départ. La gestion des VLANs et du routage inter-VLAN via le trunk a aussi demandé plusieurs manipulations.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> Configurer un réseau local demande une méthode rigoureuse et une compréhension du plan d'adressage.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je prendrais plus de notes durant les TP et je réaliserais des schémas des infrastructures avant de commencer la configuration.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-a4">
+                    AC11.04 ) Maîtriser les rôles et principes fondamentaux des systèmes d'exploitation
+                  </button>
+                </h2>
+                <div id="collapse-a4" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Appris et manipulé les systèmes d'exploitation Linux et Windows. J'ai appris à naviguer dans l'arborescence de fichiers, à gérer les utilisateurs et les droits, et à exécuter des commandes d'administration de base.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> Les équipements et serveurs réseau fonctionnent majoritairement sous Linux ou Windows Server.</p>
+                    <p><strong>Comment je l'ai fait :</strong> Via des TP en R1.01/R1.02 sur Linux (distributions Ubuntu) en ligne de commande.</p>
+                    <p><strong>Mes difficultés :</strong> L'administration via ligne de commande Linux était nouvelle pour moi. Les droits et permissions (chmod, chown) ont demandé de la pratique.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> Le système d'exploitation est la couche sur laquelle sont tous les services réseau.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je mettrais en place chez moi un environnement de test personnel (machine virtuelle Linux) dès le début de l'année.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-a5">
+                    AC11.05 ) Identifier les dysfonctionnements du réseau local et savoir les signaler
+                  </button>
+                </h2>
+                <div id="collapse-a5" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Appris à diagnostiquer des pannes réseau simples en utilisant des outils comme ping, ipconfig/ifconfig, traceroute, et analyser des trames avec Wireshark.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> Identifier un dysfonctionnement de manière claire (modèle OSI) est une compétence essentielle dans un contexte professionnel.</p>
+                    <p><strong>Comment je l'ai fait :</strong> À travers des TP où le réseau ne fonctionnaient pas du premier coup en suivant une démarche de diagnostic.</p>
+                    <p><strong>Mes difficultés :</strong> Savoir par où commencer lors d'un diagnostic était difficile au départ.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> Un bon diagnostic repose sur une méthode et une bonne connaissance des protocoles.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je m'entraînerais davantage sur des pannes variées en dehors des TP.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item" data-aos="fade-up" data-aos-delay="500">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-a6">
+                    AC11.06 ) Installer un poste client, expliquer la procédure mise en place
+                  </button>
+                </h2>
+                <div id="collapse-a6" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    <p><strong>Ce que j'ai fait :</strong> Réalisé l'installation d'un poste client sous Windows ou Linux : partitionnement du disque, installation du système d'exploitation, configuration réseau.</p>
+                    <p><strong>Pourquoi je l'ai fait :</strong> L'installation et la configuration d'un poste client est l'une des tâches les plus courantes en support informatique.</p>
+                    <p><strong>Comment je l'ai fait :</strong> En suivant une procédure étape par étape en TP, en utilisant des images ISO, et en documentant dans un compte-rendu de TP.</p>
+                    <p><strong>Mes difficultés :</strong> La gestion du partitionnement des disques dans les machines virtuelles a été délicate au départ.</p>
+                    <p><strong>Ce que j'en ai appris :</strong> Une installation propre et documentée fait gagner beaucoup de temps lors d'une maintenance ou d'une réinstallation future.</p>
+                    <p><strong>Ce que je ferais autrement :</strong> Je rédigerais la procédure en temps réel pendant la manipulation plutôt qu'après.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+            <a href="{{ url_for('portfolio_connecter') }}" class="btn-next-project">Prochain Projet <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
