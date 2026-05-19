@@ -9,9 +9,7 @@ app = Flask(__name__)
 
 # Connexion à la base de données MySQL
 # Format : mysql+pymysql://utilisateur:motdepasse@hote/nom_base
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    'mysql+pymysql://sae23_user:123@localhost/sae23'
-)
+app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://sae23_user:123@db/sae23')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Désactive les avertissements inutiles
 app.secret_key = 'change_this_in_production'           # Clé secrète pour les sessions Flask
 
@@ -175,5 +173,4 @@ def valider():
 # =============================================
 
 if __name__ == '__main__':
-    # debug=True : recharge auto si tu modifies le code
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

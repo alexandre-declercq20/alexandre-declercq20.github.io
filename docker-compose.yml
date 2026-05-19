@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  # ── Serveur base de données MySQL ──
+  db:
+    image: mysql:8.0
+    container_name: sae23_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123  # mot de passe root
+      MYSQL_DATABASE: sae23               # crée la base automatiquement
+      MYSQL_USER: sae23_user              # crée l'utilisateur automatiquement
+      MYSQL_PASSWORD: 123                 # mot de passe de l'utilisateur
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql            # sauvegarde les données même si on relance
+
+  # ── Serveur Flask ──
+  web:
+    build: .                              # utilise le Dockerfile du dossier courant
+    container_name: sae23_flask
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    depends_on:
+      - db                                # Flask attend que MySQL soit prêt
+    volumes:
+      - .:/app                            # synchronise ton code local avec le conteneur
+
+# Volume pour persister les données MySQL
+volumes:
+  db_data:
