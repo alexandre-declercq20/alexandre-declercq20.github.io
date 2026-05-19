@@ -4649,6 +4649,7 @@ textarea.form-control-lg {
 }
 
 .accordion-body {
+  margin-bottom: 15px;
   padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x);
 }
 
