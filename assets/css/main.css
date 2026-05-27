@@ -3601,3 +3601,100 @@ section,
 .input-group:focus-within .toggle-password {
   border-color: var(--accent-color, #0d6efd);
 }
+.project-accordion .accordion-button p {
+  margin: 0;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+
+.project-accordion .accordion-button {
+  gap: 0.6rem;
+  align-items: center;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Corps de l'accordéon : grille de cartes */
+.accordion-body {
+  background: color-mix(in srgb, var(--surface-color), transparent 40%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 1.25rem !important;
+}
+
+/* Grille des blocs AC */
+.ac-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .ac-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Bloc individuel */
+.ac-block {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ac-block:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,209,102, 0.2);
+}
+
+/* Label avec icône */
+.ac-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-color);
+}
+
+.ac-label i {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Texte du bloc */
+.ac-text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
+  margin: 0;
+}
+
+/* Bloc "difficultés" — couleur d'alerte douce */
+.ac-block.ac-hard .ac-label {
+  color: #ff9f7a;
+}
+.ac-block.ac-hard {
+  border-color: rgba(255,159,122,0.12);
+}
+
+/* Bloc "autrement" — ton réflexif */
+.ac-block.ac-retro .ac-label {
+  color: #a5d8ff;
+}
+.ac-block.ac-retro {
+  border-color: rgba(165,216,255,0.12);
+}
+
+/* Bloc pleine largeur */
+.ac-block.ac-full {
+  grid-column: 1 / -1;
+}
