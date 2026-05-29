@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 
 # =============================================
@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Connexion à la base de données MySQL
 # Format : mysql+pymysql://utilisateur:motdepasse@hote/nom_base
-app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://sae23_user:123@db/sae23')
+app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://sae23_user:123@localhost/sae23')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Désactive les avertissements inutiles
 app.secret_key = 'change_this_in_production'           # Clé secrète pour les sessions Flask
 
@@ -129,21 +129,18 @@ def portfolio_securiser():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """
-    Page de connexion admin.
-    GET  → affiche le formulaire
-    POST → vérifie les identifiants et redirige vers /admin
+    GET  → affiche le formulaire de connexion
+    POST → vérifie les identifiants :
+           - corrects → stocke la session et redirige vers /admin
+           - incorrects → réaffiche le formulaire avec error=True
     """
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        if username == ADMIN_USER and password == ADMIN_PASS:
-            # Identifiants corrects → on va sur le dashboard admin
+        if request.form['username'] == ADMIN_USER and request.form['password'] == ADMIN_PASS:
+            session['admin'] = True
             return redirect(url_for('admin'))
-        else:
-            # Mauvais identifiants → on ré-affiche le formulaire avec error=True
-            return render_template('login.html', error=True)
-    # Requête GET normale → on affiche le formulaire vide
+        return render_template('login.html', error=True)
     return render_template('login.html', error=False)
+
 
 
 # =============================================
@@ -152,8 +149,15 @@ def login():
 
 @app.route('/admin')
 def admin():
+    if not session.get('admin'):             # si pas connecté → retour login
+        return redirect(url_for('login'))
     semestres = Semestre.query.all()
     return render_template('admin.html', semestres=semestres)
+
+@app.route('/logout')
+def logout():
+    session.pop('admin', None)
+    return redirect(url_for('index'))
 
 
 @app.route('/admin/valider', methods=['POST'])

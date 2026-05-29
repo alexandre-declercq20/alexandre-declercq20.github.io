@@ -16,19 +16,13 @@
     </button>
 
     <span class="sidebar-label">Contenu</span>
-    <button class="sidebar-item" onclick="showPanel('profil', this)">
-      <i class="bi bi-person-circle"></i> Profil
-    </button>
     <button class="sidebar-item" onclick="showPanel('competences', this)">
       <i class="bi bi-patch-check"></i> Compétences
     </button>
     <button class="sidebar-item" onclick="showPanel('valider', this)">
       <i class="bi bi-pencil-square"></i> Valider une compétence
     </button>
-    <button class="sidebar-item" onclick="showPanel('experience', this)">
-      <i class="bi bi-briefcase"></i> Expériences
-    </button>
-
+ 
     <span class="sidebar-label">Système</span>
     <button class="sidebar-item" onclick="showPanel('securite', this)">
       <i class="bi bi-shield-lock"></i> Sécurité
@@ -114,62 +108,6 @@
             <i class="bi bi-eye"></i> Voir le site
           </a>
         </div>
-      </div>
-    </div>
-
-    <!-- ══ PROFIL ══ -->
-    <div class="admin-panel" id="panel-profil">
-      <div class="panel-header">
-        <h1>// profil</h1>
-        <p>Modifie les informations affichées sur ta page d'accueil.</p>
-      </div>
-
-      <div class="alert-admin alert-info">
-        <i class="bi bi-info-circle"></i>
-        Ces informations sont lues depuis <code style="font-family:var(--admin-mono);">config.py</code>. Modifie ce fichier pour les mettre à jour.
-      </div>
-
-      <div class="admin-card">
-        <h3>// informations_personnelles</h3>
-        <form method="POST" action="/admin/update-profil">
-          <div class="profile-grid">
-            <div class="form-group">
-              <label>Prénom</label>
-              <input type="text" class="form-control-admin" value="{{ config.PRENOM if config else 'Alexandre' }}" name="prenom">
-            </div>
-            <div class="form-group">
-              <label>Nom</label>
-              <input type="text" class="form-control-admin" value="{{ config.NOM if config else 'Declercq' }}" name="nom">
-            </div>
-            <div class="form-group">
-              <label>Formation</label>
-              <input type="text" class="form-control-admin" value="{{ config.FORMATION if config else 'BUT Réseaux & Télécommunications' }}" name="formation">
-            </div>
-            <div class="form-group">
-              <label>École</label>
-              <input type="text" class="form-control-admin" value="{{ config.ECOLE if config else 'IUT de Béthune' }}" name="ecole">
-            </div>
-            <div class="form-group">
-              <label>GitHub URL</label>
-              <input type="url" class="form-control-admin" value="{{ config.GITHUB if config else 'https://github.com/alexandre-declercq20' }}" name="github">
-            </div>
-            <div class="form-group">
-              <label>LinkedIn URL</label>
-              <input type="url" class="form-control-admin" value="{{ config.LINKEDIN if config else '' }}" name="linkedin">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Description (page d'accueil)</label>
-            <textarea class="form-control-admin" name="description">{{ config.DESCRIPTION if config else "Je suis étudiant à l'IUT de Béthune dans le département Réseau informatique et Télécommunication." }}</textarea>
-          </div>
-          <div class="form-group">
-            <label>Domaines (séparés par des virgules)</label>
-            <input type="text" class="form-control-admin" value="{{ config.DOMAINES if config else 'Administrateur Réseau, Développeur Web, Technicien Réseau' }}" name="domaines">
-          </div>
-          <button type="submit" class="btn-admin btn-primary-admin">
-            <i class="bi bi-floppy"></i> Enregistrer
-          </button>
-        </form>
       </div>
     </div>
 
@@ -294,34 +232,6 @@
             <i class="bi bi-floppy"></i> Enregistrer le niveau
           </button>
         </form>
-      </div>
-    </div>
-
-    <!-- ══ EXPÉRIENCES ══ -->
-    <div class="admin-panel" id="panel-experience">
-      <div class="panel-header">
-        <h1>// experiences</h1>
-        <p>Gère les expériences professionnelles affichées sur ton CV.</p>
-      </div>
-
-      <div class="alert-admin alert-info">
-        <i class="bi bi-info-circle"></i>
-        Les expériences sont définies dans le template <code style="font-family:var(--admin-mono);">CV.html</code>. Une future version les chargera depuis la base de données.
-      </div>
-
-      <div class="admin-card">
-        <h3>// experiences_actuelles</h3>
-        <table class="admin-table">
-          <thead>
-            <tr><th>Poste</th><th>Entreprise</th><th>Période</th><th>Type</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Equipier Polyvalent</td><td>McDonald's, Seclin</td><td>Jan–Jul 2025</td><td><span class="badge-niveau niveau-acquis">CDI</span></td></tr>
-            <tr><td>Stage Technicien Réseau</td><td>Pregerance, Courrières</td><td>Mai 2025</td><td><span class="badge-niveau niveau-cours">Stage</span></td></tr>
-            <tr><td>Employé Commercial</td><td>Super U, Nieul-sur-Mer</td><td>Étés 2023/2024</td><td><span class="badge-niveau niveau-presque">Saisonnier</span></td></tr>
-            <tr><td>Stage en Carrosserie</td><td>Peugeot, Carvin</td><td>Mai 2022</td><td><span class="badge-niveau niveau-cours">Stage</span></td></tr>
-          </tbody>
-        </table>
       </div>
     </div>
 

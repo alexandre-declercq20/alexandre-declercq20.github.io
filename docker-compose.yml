@@ -4,7 +4,7 @@ services:
 
   # ── Serveur base de données MySQL ──
   db:
-    image: mysql:8.0
+    image: mysql:10.6
     container_name: sae23_mysql
     restart: always
     environment:
