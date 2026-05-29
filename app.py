@@ -8,14 +8,13 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 # Connexion à la base de données MySQL
-# Format : mysql+pymysql://utilisateur:motdepasse@hote/nom_base
 app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://sae23_user:123@localhost/sae23')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Désactive les avertissements inutiles
 app.secret_key = 'change_this_in_production'           # Clé secrète pour les sessions Flask
 
 db = SQLAlchemy(app)  # On lie SQLAlchemy à notre application Flask
 
-# Identifiants de connexion admin
+
 ADMIN_USER = "admin"
 ADMIN_PASS = "admin123"
 
@@ -29,9 +28,9 @@ class Semestre(db.Model):
     Table : semestre
     Exemple : S1 - Semestre 1
     """
-    id    = db.Column(db.Integer, primary_key=True)   # Identifiant unique auto-incrémenté
-    code  = db.Column(db.String(10), nullable=False)  # Ex : "S1"
-    nom   = db.Column(db.String(100), nullable=False) # Ex : "Semestre 1"
+    id    = db.Column(db.Integer, primary_key=True)   
+    code  = db.Column(db.String(10), nullable=False)
+    nom   = db.Column(db.String(100), nullable=False) 
     # Relation : un semestre contient plusieurs blocs
     blocs = db.relationship('Bloc', backref='semestre', lazy=True)
 
@@ -42,8 +41,8 @@ class Bloc(db.Model):
     Exemple : B1-S1 - Administrer (dans le Semestre 1)
     """
     id          = db.Column(db.Integer, primary_key=True)
-    code        = db.Column(db.String(10), nullable=False)   # Ex : "B1-S1"
-    nom         = db.Column(db.String(100), nullable=False)  # Ex : "Administrer"
+    code        = db.Column(db.String(10), nullable=False)  
+    nom         = db.Column(db.String(100), nullable=False)  
     semestre_id = db.Column(db.Integer, db.ForeignKey('semestre.id'), nullable=False)
     # Relation : un bloc contient plusieurs compétences
     competences = db.relationship('Competence', backref='bloc', lazy=True)
@@ -55,8 +54,8 @@ class Competence(db.Model):
     Exemple : AC11.01 - Maîtriser les lois fondamentales de l'électricité
     """
     id      = db.Column(db.Integer, primary_key=True)
-    code    = db.Column(db.String(20), nullable=False)    # Ex : "AC11.01"
-    nom     = db.Column(db.String(255), nullable=False)   # Nom complet
+    code    = db.Column(db.String(20), nullable=False)   
+    nom     = db.Column(db.String(255), nullable=False)   
     # Niveau parmi 5 valeurs possibles, "non acquis" par défaut
     niveau  = db.Column(
         db.Enum('non acquis', 'en cours', 'presque acquis', 'acquis', 'expert'),
@@ -149,7 +148,7 @@ def login():
 
 @app.route('/admin')
 def admin():
-    if not session.get('admin'):             # si pas connecté → retour login
+    if not session.get('admin'):            
         return redirect(url_for('login'))
     semestres = Semestre.query.all()
     return render_template('admin.html', semestres=semestres)
